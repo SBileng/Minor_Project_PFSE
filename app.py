@@ -48,5 +48,5 @@ with col2:
 
 results = cm.analyze(section,N,Vx,Vy,Mxx,Myy,Mzz)
 st.set_option('deprecation.showPyplotGlobalUse', False)
-fig = plt.plot(data = results.plot_stress("vm", cmap="inferno"))
+fig = plt.plot(data = results.plot_stress("vm", cmap="inferno", normalize=False))
 st.pyplot(fig)
