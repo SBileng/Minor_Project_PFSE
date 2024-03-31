@@ -23,15 +23,14 @@ class steel:
 class section:
 
     material:Material
-  
-@dataclass
-class I_section(section):
-
     height:float
     width:float
     fl_thick:float
     web_thick:float
     radius:float = 0
+
+@dataclass
+class I_section(section):
 
     def geo(self):
         return steel_geo.i_section(self.height,self.width,self.fl_thick,self.web_thick, self.radius,self.material)    
@@ -39,36 +38,15 @@ class I_section(section):
 @dataclass
 class U_section(section):
 
-    height:float
-    width:float
-    fl_thick:float
-    web_thick:float
-    radius:float = 0
-
     def geo(self):
         return steel_geo.channel_section(self.height,self.width,self.fl_thick,self.web_thick, self.radius,self.material)    
 
 @dataclass
 class T_section(section):
 
-    height:float
-    width:float
-    fl_thick:float
-    web_thick:float
-    radius:float = 0
-
     def geo(self):
         return steel_geo.tee_section(self.height,self.width,self.fl_thick,self.web_thick, self.radius,self.material)    
 
-@dataclass
-class O_section(section):
-
-    diameter:float
-    thickness:float
-    n:float = 180
-
-    def geo(self):
-        return steel_geo.circular_hollow_section(self.diameter,self.thickness,self.n,self.material)  
 
 def str_to_float(s:str) -> float|str:
     """
@@ -80,7 +58,7 @@ def str_to_float(s:str) -> float|str:
         value = s
     return value
 
-def mesh(section:Geometry,size:float=50):
+def mesh(section:Geometry,size:float=100):
     sec = section.geo()
     sec.create_mesh(size)
     return sec

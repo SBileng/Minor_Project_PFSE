@@ -1,12 +1,11 @@
 import streamlit as st
 import calc_module as cm
-import matplotlib as mp
 from matplotlib import pyplot as plt
 
 st.header("Section Designer")
 
 materials = ["S235","S355","S460"]
-sections = ["I","U","T","O"]
+sections = ["I","U","T"]
 run = False
 col1, col2 = st.columns(2)
 
@@ -27,30 +26,17 @@ with col1:
 
     section = cm.section
 
+    height = st.number_input("height",10,1000,200)
+    width = st.number_input("width",10,1000,200)
+    fl_thick = st.number_input("flange thickness",10,40,10)
+    web_thick = st.number_input("web thickness",10,40,10)
+
     if selection == "I":
-        height = st.number_input("height",10,1000,200)
-        width = st.number_input("width",10,1000,200)
-        fl_thick = st.number_input("flange thickness",1,40,10)
-        web_thick = st.number_input("web thickness",1,40,10)
         section = cm.I_section(steel,height,width,fl_thick,web_thick)
     elif selection == "U":
-        height = st.number_input("height",10,1000,200)
-        width = st.number_input("width",10,1000,200)
-        fl_thick = st.number_input("flange thickness",1,40,10)
-        web_thick = st.number_input("web thickness",1,40,10)
         section = cm.U_section(steel,height,width,fl_thick,web_thick)
     elif selection == "T":
-        height = st.number_input("height",10,1000,200)
-        width = st.number_input("width",10,1000,200)
-        fl_thick = st.number_input("flange thickness",10,40,10)
-        web_thick = st.number_input("web thickness",10,40,10)
         section = cm.T_section(steel,height,width,fl_thick,web_thick)
-    elif selection == "O":
-        diameter = st.number_input("diameter",10,1000,200)
-        thickness = st.number_input("thickness",1,40,10)
-        section = cm.O_section(steel,diameter,thickness)
-    #cm.image_geo(section)
-    #st.image("section.png")
 
 with col2:
     N = st.number_input("Axial load",0)
