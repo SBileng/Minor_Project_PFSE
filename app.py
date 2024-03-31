@@ -26,10 +26,10 @@ with col1:
 
     section = cm.section
 
-    height = st.number_input("height",10,1000,200)
-    width = st.number_input("width",10,1000,200)
-    fl_thick = st.number_input("flange thickness",10,40,10)
-    web_thick = st.number_input("web thickness",10,40,10)
+    height = st.number_input("height [mm]",10,1000,200)
+    width = st.number_input("width [mm]",10,1000,200)
+    fl_thick = st.number_input("flange thickness [mm]",10,40,10)
+    web_thick = st.number_input("web thickness [mm]",10,40,10)
 
     if selection == "I":
         section = cm.I_section(steel,height,width,fl_thick,web_thick)
@@ -39,12 +39,12 @@ with col1:
         section = cm.T_section(steel,height,width,fl_thick,web_thick)
 
 with col2:
-    N = st.number_input("Axial load",0)
-    Vy = st.number_input("Shear Major",0)
-    Vx = st.number_input("Shear Minor",0)
-    Mzz = st.number_input("Torsional Moment",0)
-    Mxx = st.number_input("Moment Major",0)
-    Myy = st.number_input("Moment Minor",0)
+    N = st.number_input("Axial load [N]",0)
+    Vy = st.number_input("Shear Major [N]",0)
+    Vx = st.number_input("Shear Minor [N]",0)
+    Mzz = st.number_input("Torsional Moment [Nm]",0)
+    Mxx = st.number_input("Moment Major [Nm]",0)
+    Myy = st.number_input("Moment Minor [Nm]",0)
 
 results = cm.analyze(section,N,Vx,Vy,Mxx,Myy,Mzz)
 st.set_option('deprecation.showPyplotGlobalUse', False)
