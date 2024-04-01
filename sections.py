@@ -56,7 +56,7 @@ def analyze(section:Section,N:float=0,Vx:float=0,Vy:float=0,Mxx:float=0,Myy:floa
     section.calculate_plastic_properties()
 
     mat = section.materials.pop(0)    
-    result = max(section.calculate_stress(N,Vx,Vy,0.,0.,Mxx,Myy,Mzz).get_stress().pop(0)["sig_vm"])
+    result = max(section.calculate_stress(N,Vx,Vy,0.,0.,Myy,Mxx,Mzz).get_stress().pop(0)["sig_vm"])
     df_dict = {"Name":mat.name,"Steel yield strength":mat.yield_strength,"N":N,"Vx":Vx,"Vy":Vy,"Mzz":Mzz,"Mxx":Mxx,"Myy":Myy,"von Mises":result,"Utilisation":result/mat.yield_strength}
     return pd.Series(df_dict)
 
@@ -81,4 +81,4 @@ def analyze_visualize(section:Section,N:float=0,Vx:float=0,Vy:float=0,Mxx:float=
     section.calculate_warping_properties()
     section.calculate_plastic_properties()
 
-    return section.calculate_stress(N,Vx,Vy,0.,0.,Mxx,Myy,Mzz).plot_stress("vm", cmap="viridis", normalize=False)
+    return section.calculate_stress(N,Vx,Vy,0.,0.,Myy,Mxx,Mzz).plot_stress("vm", cmap="viridis", normalize=False)
