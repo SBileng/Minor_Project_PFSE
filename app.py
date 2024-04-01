@@ -52,8 +52,8 @@ with col1:
 
 with col2:
     N = st.number_input("Axial load [N]",0)
-    Vy = st.number_input("Shear Major [N]",0)
-    Vx = st.number_input("Shear Minor [N]",0)
+    Vx = st.number_input("Shear Major [N]",0)
+    Vy = st.number_input("Shear Minor [N]",0)
     Mzz = st.number_input("Torsional Moment [Nm]",0)
     Myy = st.number_input("Moment Major [Nm]",0)
     Mxx = st.number_input("Moment Minor [Nm]",0)
