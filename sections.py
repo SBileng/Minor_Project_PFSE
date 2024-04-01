@@ -81,4 +81,4 @@ def analyze_visualize(section:Section,N:float=0,Vx:float=0,Vy:float=0,Mxx:float=
     section.calculate_warping_properties()
     section.calculate_plastic_properties()
 
-    return section.calculate_stress(N,Vx,Vy,0.,0.,Mxx,Myy,Mzz).plot_stress("vm", cmap="inferno", normalize=False)
+    return section.calculate_stress(N,Vx,Vy,0.,0.,Mxx,Myy,Mzz).plot_stress("vm", cmap="viridis", normalize=False)
