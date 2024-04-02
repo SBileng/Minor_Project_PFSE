@@ -57,7 +57,7 @@ def analyze(section:Section,N:float=0,Vx:float=0,Vy:float=0,Mxx:float=0,Myy:floa
 
     mat = section.materials.pop(0)    
     result = max(section.calculate_stress(N,Vy,Vx,0.,0.,Myy,Mxx,Mzz).get_stress().pop(0)["sig_vm"])
-    df_dict = {"Name":mat.name,"Steel yield strength":mat.yield_strength,"N":N,"Vx":Vx,"Vy":Vy,"Mzz":Mzz,"Mxx":Mxx,"Myy":Myy,"von Mises":result,"Utilisation":result/mat.yield_strength}
+    df_dict = {"Name":mat.name,"Steel yield strength":mat.yield_strength,"N":N,"Vx":Vx,"Vy":Vy,"Mzz":Mzz/1000,"Mxx":Mxx/1000,"Myy":Myy/1000,"von Mises":result,"Utilisation":result/mat.yield_strength}
     return pd.Series(df_dict)
 
 
